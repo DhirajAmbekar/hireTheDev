@@ -7,6 +7,8 @@
 }
 
 @import "./common/1collect";
+@import "./components/collection2";
+@import "./pages/collection3";
 
 /* Apply background and text colors */
 body {
@@ -55,3 +57,7 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+// .layout {
+//   margin: 78px 0 0 0;
+// }

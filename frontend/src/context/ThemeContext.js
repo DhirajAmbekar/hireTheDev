@@ -12,6 +12,16 @@ export const ThemeProvider = ({ children }) => {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  // Set theme based on current time
+  useEffect(() => {
+    const currentTime = new Date().getHours();
+    if (currentTime >= 6 && currentTime < 18) {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  }, []);
+
   // Toggle between light & dark mode
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));

@@ -3,7 +3,9 @@
 
 
 $const_font_weight: 400;
-
+body {
+  font-family: "Inter", sans-serif;
+}
 @mixin font_generator($font_size, $line_height, $weight) {
   --fs: #{desktop_length($font_size)};
   font-size: calc($font_size * 1px);

@@ -29,22 +29,24 @@
   --success: #28a745;
   --warning: #ffc107;
   --error: #dc3545;
+  --brown: #964B00; /* A warm, earthy brown */
 }
-
 
 /* ☀️ Light Theme */
 [data-theme="light"] {
   --background: var(--background-light);
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
   --text: var(--text-light);
   --surface: var(--surface-light);
   --border: var(--border-light);
 }
 
-
-
 /* 🌑 Dark Theme */
 [data-theme="dark"] {
   --background: var(--background-dark);
+  --primary: var(--primary-dark);
+  --secondary: var(--secondary-dark);
   --text: var(--text-dark);
   --surface: var(--surface-dark);
   --border: var(--border-dark);
