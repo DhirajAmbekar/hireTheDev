@@ -1,8 +1,13 @@
 
+import Layout from "./Layout";
 
 function App() {
   return (
-   <>asdasd</>
+    <BrowserRouter>
+      <Provider>
+        <Layout />
+      </Provider>
+    </BrowserRouter>
   );
 }
 

@@ -7,8 +7,27 @@
 }
 
 @import "./common/1collect";
+
+/* Apply background and text colors */
 body {
+  background-color: var(--background);
+  color: var(--text);
+  transition: all 0.3s ease-in-out;
   margin: 0;
+}
+
+.theme-toggle {
+  padding: 8px 16px;
+  background: var(--primary);
+  border: none;
+  color: var(--foreground);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+  background: var(--secondary);
 }
 
 ::-webkit-scrollbar {

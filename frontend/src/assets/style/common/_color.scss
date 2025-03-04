@@ -1,0 +1,51 @@
+:root {
+  /* Primary Colors */
+  --primary: #007bff; /* A strong, professional blue */
+  --primary-dark: #0056b3; /* Darker shade for hover/focus */
+  --primary-light: #3399ff; /* Lighter shade for highlights */
+
+  /* Secondary Colors */
+  --secondary: #ff9800; /* A warm, inviting orange */
+  --secondary-dark: #e68900;
+  --secondary-light: #ffb74d;
+
+  /* Background Colors */
+  --background-light: #f8f9fa; /* Soft light background */
+  --background-dark: #121212; /* Deep dark mode background */
+
+  /* Text Colors */
+  --text-light: #212529; /* Dark text for light theme */
+  --text-dark: #e0e0e0; /* Light text for dark theme */
+
+  /* Surface & Card Colors */
+  --surface-light: #ffffff; /* White for cards, modals */
+  --surface-dark: #1e1e1e; /* Dark mode surface */
+
+  /* Border Colors */
+  --border-light: #dee2e6;
+  --border-dark: #444;
+
+  /* Success, Warning, and Error Colors */
+  --success: #28a745;
+  --warning: #ffc107;
+  --error: #dc3545;
+}
+
+
+/* ☀️ Light Theme */
+[data-theme="light"] {
+  --background: var(--background-light);
+  --text: var(--text-light);
+  --surface: var(--surface-light);
+  --border: var(--border-light);
+}
+
+
+
+/* 🌑 Dark Theme */
+[data-theme="dark"] {
+  --background: var(--background-dark);
+  --text: var(--text-dark);
+  --surface: var(--surface-dark);
+  --border: var(--border-dark);
+}
