@@ -1,0 +1,12 @@
+
+$page_width_desktop: 1440;
+$page_width_mobile: 375;
+
+@function desktop_length($length) {
+  // @return calc((($length / $page_width_desktop) * 100)) + 0vw;
+  @return calc($length * 1px);
+}
+@function mobile_length($length) {
+  // @return calc((($length / $page_width_mobile) * 100)) + 0vw;
+  @return calc($length * 1px);
+}
