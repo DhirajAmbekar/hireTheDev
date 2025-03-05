@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RoleSelector = () => {
+const CustInput = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const RoleSelector = () => {
   )
 }
 
-export default RoleSelector
+export default CustInput

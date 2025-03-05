@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-
-import { ThemeContext } from "../context/ThemeContext";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useLocation, useNavigate } from "react-router-dom";
+import { ThemeContext } from "../context/ThemeContext";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const nav = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   // console.log(location.pathname);
   return (
@@ -17,7 +16,7 @@ const Navbar = () => {
         <div
           className="nav_section_sign"
           onClick={() => {
-            nav("/login");
+            navigate("/login");
           }}
         >
           {location.pathname === "/login" ? "" : "Sign in"}

@@ -4,8 +4,9 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 
 import Login from "./pages/Login";
-import RoleSelector from "./pages/RoleSelector";
 import Navbar from "./components/Navbar";
+// import RoleSelector from "./pages/RoleSelector";
+// import Navbar from "./components/Navbar";
 // import { useDispatch, useSelector } from "react-redux";
 // import { fetchUser } from "./features/userSlice";
 
@@ -29,10 +30,10 @@ const Layout = () => {
       path: "/login",
       element: <Login />,
     },
-    {
-      path: "/roleselector",
-      element: <RoleSelector />,
-    },
+    // {
+    //   path: "/roleselector",
+    //   element: <RoleSelector />,
+    // },
 
     {
       path: "/*",
