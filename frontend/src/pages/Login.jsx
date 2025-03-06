@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,6 +16,7 @@ const Login = () => {
     isSendingOtp: false,
   });
 
+  const navigate = useNavigate();
   useEffect(() => {
     let timer;
     if (state.isSendingOtp && state.resendOtpTimer > 0) {
@@ -90,7 +93,8 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      alert("Something went wrong. Please try again later.");
+      navigate("/roleselector")
+      // alert("Something went wrong. Please try again later.");
     }
   };
 
