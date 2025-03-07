@@ -15,7 +15,6 @@ const color = {
   FgMagenta: `\x1b[35m`,
   FgCyan: `\x1b[36m`,
   FgWhite: `\x1b[37m`,
-  // FgCrimson: "\x1b[38m",
   FgGray: `\x1b[90m`,
 
   BgBlack: `\x1b[40m`,
@@ -26,9 +25,9 @@ const color = {
   BgMagenta: `\x1b[45m`,
   BgCyan: `\x1b[46m`,
   BgWhite: `\x1b[47m`,
-  // BgCrimson: "\x1b[48m",
   BgGray: `\x1b[100m`,
 };
+
 const colours = {
   reset: "\x1b[0m",
   bright: "\x1b[1m",
@@ -48,7 +47,6 @@ const colours = {
     cyan: "\x1b[36m",
     white: "\x1b[37m",
     gray: "\x1b[90m",
-    // crimson: "\x1b[38m", // Scarlet
   },
   bg: {
     black: "\x1b[40m",
@@ -60,57 +58,43 @@ const colours = {
     cyan: "\x1b[46m",
     white: "\x1b[47m",
     gray: "\x1b[100m",
-    // crimson: "\x1b[48m",
   },
 };
 
+// Logging functions
 const logger_all = () => {
-  Object.keys(color).map((el) => console.log(color[el] + "%s\x1b[0m", el));
+  Object.keys(color).forEach((el) => console.log(color[el] + "%s\x1b[0m", el));
 };
-const log_error = (txt) => {
-  console.log(colours.bg.red, txt, colours.reset);
-};
-const log_success = (txt) => {
-  console.log(colours.bg.green, txt, colours.reset);
-};
-const log_progress = (txt) => {
+
+const log_error = (txt) => console.log(colours.bg.red, txt, colours.reset);
+const log_success = (txt) => console.log(colours.bg.green, txt, colours.reset);
+const log_progress = (txt) =>
   console.log(colours.bg.yellow, txt, colours.reset);
-};
-const log_gscript = (txt) => {
-  console.log(colours.bg.blue, txt, colours.reset);
-};
-const log_start = (txt) => {
-  console.log(colours.bg.gray, "---- START -> " + txt + " ----", colours.reset);
-};
-const log_end = (txt) => {
-  console.log(colours.bg.gray, "----- END -> " + txt + " -----", colours.reset);
-};
+const log_gscript = (txt) => console.log(colours.bg.blue, txt, colours.reset);
+const log_start = (txt) =>
+  console.log(colours.bg.gray, `---- START -> ${txt} ----`, colours.reset);
+const log_end = (txt) =>
+  console.log(colours.bg.gray, `----- END -> ${txt} -----`, colours.reset);
+
 const log_line = (...txt) => {
-  var err = new Error();
-  var caller_line = err.stack.split("\n")[2];
-  var index = caller_line.indexOf("at ");
-  // var clean = caller_line.slice(index + 2, caller_line.length);
+  let err = new Error();
+  let caller_line = err.stack.split("\n")[2];
   let clean = caller_line.split("(").pop();
   console.log(colours.bg.gray, clean.slice(0, -1), ...txt, colours.reset);
 };
 
+// Database error handler
 const db_err = (res, from = "not defined", err) => {
-  log_error("DB Error on => " + from + " with err => " + JSON.stringify(err));
+  log_error(`DB Error on => ${from} with err => ${JSON.stringify(err)}`);
   log_end(from);
-  return res.send({
-    status: true,
-    err: true,
-    data: "DB Error",
-  });
+  return res.send({ status: true, err: true, data: "DB Error" });
 };
+
+// Missing key error handler
 const key_err = (res, from, keys) => {
-  log_error("Key/s not passed in => " + from + " with/out keys => " + keys);
+  log_error(`Key/s not passed in => ${from} with/out keys => ${keys}`);
   log_end(from);
-  return res.send({
-    status: false,
-    err: true,
-    err_msg: "keys not passed",
-  });
+  return res.send({ status: false, err: true, err_msg: "keys not passed" });
 };
 
 module.exports = {
@@ -122,7 +106,6 @@ module.exports = {
   log_start,
   log_end,
   log_line,
-  //
   db_err,
   key_err,
 };
