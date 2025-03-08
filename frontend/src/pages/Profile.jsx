@@ -9,7 +9,8 @@ export const Profile = () => {
 
   useEffect(() => {
     // const userType = getUserTypeFromToken();
-    // setUserType(userType);
+    const user = localStorage.getItem("usertype");
+    setUserType(user || "employee");
     // Fetch profile data based on user type
     // Assume fetchProfileData is a function that fetches profile data
     fetchProfileData(userType).then((data) => setProfileData(data));
@@ -20,8 +21,16 @@ export const Profile = () => {
   }
 
   return (
-    <div className={`w-full mt-16 px-8 ${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
-      <div className={`p-8 rounded-lg shadow-lg ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
+    <div
+      className={`w-full mt-16 px-8 ${
+        theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
+      }`}
+    >
+      <div
+        className={`p-8 rounded-lg shadow-lg ${
+          theme === "dark" ? "bg-gray-800" : "bg-white"
+        }`}
+      >
         <h1 className="text-2xl font-bold mb-4">Profile</h1>
         {userType === "employee" ? (
           <div>
@@ -33,22 +42,42 @@ export const Profile = () => {
             <h3 className="text-lg font-semibold mt-4">Skills</h3>
             <div className="flex flex-wrap gap-2">
               {profileData.skills.map((skill, index) => (
-                <span key={index} className="bg-blue-500 text-white px-2 py-1 rounded">
+                <span
+                  key={index}
+                  className="bg-blue-500 text-white px-2 py-1 rounded"
+                >
                   {skill}
                 </span>
               ))}
             </div>
             <h3 className="text-lg font-semibold mt-4">Projects</h3>
             {profileData.projects.map((project, index) => (
-              <div key={index} className={`p-4 rounded-lg shadow-md mt-2 ${theme === "dark" ? "bg-gray-700" : "bg-gray-100"}`}>
+              <div
+                key={index}
+                className={`p-4 rounded-lg shadow-md mt-2 ${
+                  theme === "dark" ? "bg-gray-700" : "bg-gray-100"
+                }`}
+              >
                 <p>Project Name: {project.name}</p>
                 <p>Type: {project.type}</p>
                 <p>Description: {project.description}</p>
-                <p>URL: <a href={project.url} target="_blank" rel="noopener noreferrer">{project.url}</a></p>
+                <p>
+                  URL:{" "}
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.url}
+                  </a>
+                </p>
                 <h4 className="text-md font-semibold mt-2">Skills Used</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.skillsUsed.map((skill, i) => (
-                    <span key={i} className="bg-green-500 text-white px-2 py-1 rounded">
+                    <span
+                      key={i}
+                      className="bg-green-500 text-white px-2 py-1 rounded"
+                    >
                       {skill}
                     </span>
                   ))}
@@ -61,18 +90,35 @@ export const Profile = () => {
             <h2 className="text-xl font-semibold">Employer Profile</h2>
             <p>Company Name: {profileData.companyName}</p>
             <p>Address: {profileData.address}</p>
-            <p>Web URL: <a href={profileData.webUrl} target="_blank" rel="noopener noreferrer">{profileData.webUrl}</a></p>
+            <p>
+              Web URL:{" "}
+              <a
+                href={profileData.webUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {profileData.webUrl}
+              </a>
+            </p>
             <p>Company Type: {profileData.companyType}</p>
             <h3 className="text-lg font-semibold mt-4">Jobs</h3>
-            {profileData.jobs.map((job, index) => (
-              <div key={index} className={`p-4 rounded-lg shadow-md mt-2 ${theme === "dark" ? "bg-gray-700" : "bg-gray-100"}`}>
+            {profileData?.jobs?.map((job, index) => (
+              <div
+                key={index}
+                className={`p-4 rounded-lg shadow-md mt-2 ${
+                  theme === "dark" ? "bg-gray-700" : "bg-gray-100"
+                }`}
+              >
                 <p>Role: {job.role}</p>
                 <p>Experience: {job.experience}</p>
                 <p>Salary: {job.salary}</p>
                 <h4 className="text-md font-semibold mt-2">Skills Required</h4>
                 <div className="flex flex-wrap gap-2">
                   {job.skills.map((skill, i) => (
-                    <span key={i} className="bg-red-500 text-white px-2 py-1 rounded">
+                    <span
+                      key={i}
+                      className="bg-red-500 text-white px-2 py-1 rounded"
+                    >
                       {skill}
                     </span>
                   ))}

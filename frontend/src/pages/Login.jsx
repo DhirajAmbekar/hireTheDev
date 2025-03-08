@@ -93,7 +93,8 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error verifying OTP:", error);
-      navigate("/roleselector")
+      navigate("/roleselector");
+      localStorage.setItem("userData", JSON.stringify(state));
       // alert("Something went wrong. Please try again later.");
     }
   };
@@ -154,7 +155,7 @@ const Login = () => {
                     <AiOutlineEdit size={20} />
                   </button>
                 </div>
-                <div className="flex justify-center space-x-2 w-full">
+                <div className="flex justify-center space-x-2 w-full text-cyan-950">
                   {[0, 1, 2, 3].map((index) => (
                     <input
                       key={index}

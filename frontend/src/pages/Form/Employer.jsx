@@ -11,8 +11,11 @@ import {
   Chip,
 } from "@mui/material";
 import { AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 export const Employer = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     companyName: "",
     address: "",
@@ -35,7 +38,10 @@ export const Employer = () => {
   const handleAddJob = () => {
     setFormData((prevState) => ({
       ...prevState,
-      jobs: [...prevState.jobs, { role: "", experience: "", skills: [], salary: "" }],
+      jobs: [
+        ...prevState.jobs,
+        { role: "", experience: "", skills: [], salary: "" },
+      ],
     }));
   };
 
@@ -65,12 +71,14 @@ export const Employer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
+    localStorage.setItem("usertype", "employer");
+    navigate("/profile");
   };
 
   return (
     <Container maxWidth="sm">
       <Box className="bg-white p-8 rounded-lg shadow-lg mt-10">
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom className="text-center text-amber-950">
           Employer Form
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -120,7 +128,7 @@ export const Employer = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="h6">Jobs</Typography>
+              <Typography variant="h6" className="text-amber-950">Jobs</Typography>
               {formData.jobs.map((job, index) => (
                 <Paper key={index} elevation={3} sx={{ p: 2, mb: 2 }}>
                   <Box display="flex" flexDirection="column" gap={1}>

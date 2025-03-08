@@ -11,8 +11,10 @@ import {
   Paper,
 } from "@mui/material";
 import { AiOutlinePlus, AiOutlineDelete } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 export const Employee = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -101,13 +103,15 @@ export const Employee = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form Submitted:", formData);
+      localStorage.setItem("usertype", "employee");
+      navigate("/profile");
     }
   };
 
   return (
     <Container maxWidth="sm">
       <Box className="bg-white p-8 rounded-lg shadow-lg mt-16">
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom className="text-center text-black">
           Employee Form
         </Typography>
         <form onSubmit={handleSubmit}>
@@ -153,7 +157,7 @@ export const Employee = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="h6">Skills</Typography>
+              <Typography variant="h6" className="text-black">Skills</Typography>
               <TextField
                 fullWidth
                 variant="outlined"
@@ -187,7 +191,7 @@ export const Employee = () => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="h6">Projects</Typography>
+              <Typography variant="h6" className=" text-black">Projects</Typography>
               {formData.projects.map((project, index) => (
                 <Paper key={index} elevation={3} sx={{ p: 2, mb: 2 }}>
                   <Box display="flex" flexDirection="column" gap={1}>
